@@ -2,25 +2,23 @@ using System;
 using DG.Tweening;
 using UnityEngine;
 
-public class PlayerRealControl : MonoBehaviour
+public class PlayerShadowControl : MonoBehaviour
 {
     public float horizontalSpeed;
     public float jumpForce;
-    public int track;
 
-    private Rigidbody _rigidbody;
+    private Rigidbody2D _rigidbody;
     private bool _onGround;
 
     private void Awake()
     {
-        _rigidbody = GetComponent<Rigidbody>();
+        _rigidbody = GetComponent<Rigidbody2D>();
     }
 
     private void Update()
     {
-        //HandleMoveHorizontal();
-        HandleMoveVertical();
-        //HandleJump();
+        HandleMoveHorizontal();
+        HandleJump();
     }
 
     private void HandleMoveHorizontal()
@@ -28,16 +26,6 @@ public class PlayerRealControl : MonoBehaviour
         var x = InputManager.Instance.GetMoveHorizontal() * horizontalSpeed;
         var movement = new Vector3(x, 0, 0);
         transform.Translate(movement * Time.deltaTime);
-    }
-
-    private void HandleMoveVertical()
-    {
-        var value = InputManager.Instance.GetMoveVerticalThisFrame();
-        if (value != 0)
-        {
-            track += value;
-            _rigidbody.DOMoveZ(track * 2.5f, .5f).SetEase(Ease.OutExpo);
-        }
     }
 
     private void HandleJump()
@@ -48,7 +36,7 @@ public class PlayerRealControl : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Ground"))
         {
@@ -56,7 +44,7 @@ public class PlayerRealControl : MonoBehaviour
         }
     }
 
-    private void OnCollisionExit(Collision collision)
+    private void OnCollisionExit2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Ground"))
         {
