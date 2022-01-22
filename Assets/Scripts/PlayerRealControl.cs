@@ -1,19 +1,66 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 
 public class PlayerRealControl : MonoBehaviour
 {
     public float horizontalSpeed;
-    private void Update()
+    public float jumpForce;
+    public int track;
+
+    private Rigidbody _rigidbody;
+    private bool _onGround;
+
+    private void Awake()
     {
-        Move();
+        _rigidbody = GetComponent<Rigidbody>();
     }
 
-    private void Move()
+    private void Update()
     {
-        var movement = new Vector3(InputManager.Instance.GetMoveHorizontal() * horizontalSpeed, 0, 0);
+        HandleMoveHorizontal();
+        HandleMoveVertical();
+        HandleJump();
+    }
+
+    private void HandleMoveHorizontal()
+    {
+        var x = InputManager.Instance.GetMoveHorizontal() * horizontalSpeed;
+        var movement = new Vector3(x, 0, 0);
         transform.Translate(movement * Time.deltaTime);
+    }
+
+    private void HandleMoveVertical()
+    {
+        var value = InputManager.Instance.GetMoveVerticalThisFrame();
+        if (value != 0)
+        {
+            track += value;
+            _rigidbody.DOMoveZ(track * 2.5f, .5f).SetEase(Ease.OutExpo);
+        }
+    }
+
+    private void HandleJump()
+    {
+        if (InputManager.Instance.GetJumpThisFrame() && _onGround)
+        {
+            _rigidbody.AddForce(jumpForce * Vector3.up);
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            _onGround = true;
+        }
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            _onGround = false;
+        }
     }
 }
