@@ -10,11 +10,12 @@ public class GateCollision : MonoBehaviour
     
     [SerializeField]
     private Transform SpawningPoint;
-    private void OnCollisionEnter(Collision collision)
+
+    private void OnTriggerEnter(Collider other)
     {
         if(gateUsed) return;
 
-        if (collision.gameObject.CompareTag("Player"))
+        if (other.CompareTag("Player"))
         {
             if (RoomController.Get().IsGameOver())
             {

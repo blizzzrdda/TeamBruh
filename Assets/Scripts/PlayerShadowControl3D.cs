@@ -31,7 +31,8 @@ public class PlayerShadowControl3D : MonoBehaviour
             return;
         
         var movement = new Vector3(x, 0, 0);
-        _rigidbody.AddForce(movement * Time.deltaTime);
+        // _rigidbody.AddForce(movement * Time.deltaTime);
+        transform.Translate(movement * Time.deltaTime);
     }
 
     private void HandleJump()
