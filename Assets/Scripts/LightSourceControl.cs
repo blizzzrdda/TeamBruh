@@ -6,10 +6,11 @@ using UnityEngine;
 public class LightSourceControl : MonoBehaviour
 {
     public float speed;
+    public bool Enabled { get; set; }
     
     private void Update()
     {
-        if (InputManager.Instance.controlState != 2)
+        if (InputManager.Instance.controlState != 2 || !Enabled)
             return;
         
         Control();

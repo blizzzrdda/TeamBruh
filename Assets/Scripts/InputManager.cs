@@ -41,10 +41,10 @@ public class InputManager : MonoBehaviour
         _moveVertical = _playerInputMap.PlayerControl.MoveVertical;
         _playerInputMap.PlayerControl.Enable();
 
-        _playerInputMap.PlayerControl.Transform.performed += TransformOnperformed;
+        _playerInputMap.PlayerControl.Transform.performed += TransformOnPerformed;
     }
 
-    private void TransformOnperformed(InputAction.CallbackContext obj)
+    private void TransformOnPerformed(InputAction.CallbackContext obj)
     {
         controlState = controlState == 0 ? 1 : 0;
         BlendCamera();

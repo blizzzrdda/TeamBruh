@@ -78,6 +78,7 @@ public class PlayerRealControl : MonoBehaviour
         if (other.CompareTag("LightControl"))
         {
             _inLightControl = true;
+            other.gameObject.GetComponentInChildren<LightSourceControl>().Enabled = true;
         }
     }
 
@@ -86,6 +87,7 @@ public class PlayerRealControl : MonoBehaviour
         if (other.CompareTag("LightControl"))
         {
             _inLightControl = false;
+            other.gameObject.GetComponentInChildren<LightSourceControl>().Enabled = false;
         }
     }
 }
