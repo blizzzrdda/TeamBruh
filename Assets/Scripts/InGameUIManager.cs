@@ -14,6 +14,7 @@ public class InGameUIManager : MonoBehaviour
 
     private void Awake()
     {
+        playerRealControl = GameObject.FindWithTag("Player").GetComponent<PlayerRealControl>();
         respawnButton.onClick.AddListener(RespawnButtonClick);
         _canvasGroup = GetComponentInChildren<CanvasGroup>();
     }
