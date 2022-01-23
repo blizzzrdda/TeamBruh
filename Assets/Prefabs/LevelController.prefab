@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8470200078017626439}
   - component: {fileID: 8470200078017626440}
   m_Layer: 0
-  m_Name: PuzzleRoomGenerator
+  m_Name: LevelController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

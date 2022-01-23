@@ -75,6 +75,7 @@ GameObject:
   - component: {fileID: 2945944717200368475}
   - component: {fileID: 2945944717200368474}
   - component: {fileID: 2945944717200368473}
+  - component: {fileID: 3810543233973918474}
   m_Layer: 0
   m_Name: Light
   m_TagString: Untagged
@@ -158,6 +159,19 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &3810543233973918474
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2945944717200368472}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 139a13f0b4286344dbff2ae0b57fdbb6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _objectReference: {fileID: 11400000, guid: 17a3ebd4dd5b92245a776ed6af4f2ff9, type: 2}
 --- !u!1 &2945944717401546158
 GameObject:
   m_ObjectHideFlags: 0
