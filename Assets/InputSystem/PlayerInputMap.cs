@@ -71,6 +71,15 @@ public partial class @PlayerInputMap : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Transform"",
+                    ""type"": ""Button"",
+                    ""id"": ""f7f1f562-da0e-4b0a-bcf6-6d80f1e8777b"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -315,6 +324,28 @@ public partial class @PlayerInputMap : IInputActionCollection2, IDisposable
                     ""action"": ""MoveInOut"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e5e185e2-4244-4c63-97c6-64c00b1c9531"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Transform"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""12952da0-a221-42ff-a124-59e141ecd402"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Transform"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -328,6 +359,7 @@ public partial class @PlayerInputMap : IInputActionCollection2, IDisposable
         m_PlayerControl_MoveVertical = m_PlayerControl.FindAction("MoveVertical", throwIfNotFound: true);
         m_PlayerControl_Interact = m_PlayerControl.FindAction("Interact", throwIfNotFound: true);
         m_PlayerControl_MoveInOut = m_PlayerControl.FindAction("MoveInOut", throwIfNotFound: true);
+        m_PlayerControl_Transform = m_PlayerControl.FindAction("Transform", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -392,6 +424,7 @@ public partial class @PlayerInputMap : IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerControl_MoveVertical;
     private readonly InputAction m_PlayerControl_Interact;
     private readonly InputAction m_PlayerControl_MoveInOut;
+    private readonly InputAction m_PlayerControl_Transform;
     public struct PlayerControlActions
     {
         private @PlayerInputMap m_Wrapper;
@@ -401,6 +434,7 @@ public partial class @PlayerInputMap : IInputActionCollection2, IDisposable
         public InputAction @MoveVertical => m_Wrapper.m_PlayerControl_MoveVertical;
         public InputAction @Interact => m_Wrapper.m_PlayerControl_Interact;
         public InputAction @MoveInOut => m_Wrapper.m_PlayerControl_MoveInOut;
+        public InputAction @Transform => m_Wrapper.m_PlayerControl_Transform;
         public InputActionMap Get() { return m_Wrapper.m_PlayerControl; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -425,6 +459,9 @@ public partial class @PlayerInputMap : IInputActionCollection2, IDisposable
                 @MoveInOut.started -= m_Wrapper.m_PlayerControlActionsCallbackInterface.OnMoveInOut;
                 @MoveInOut.performed -= m_Wrapper.m_PlayerControlActionsCallbackInterface.OnMoveInOut;
                 @MoveInOut.canceled -= m_Wrapper.m_PlayerControlActionsCallbackInterface.OnMoveInOut;
+                @Transform.started -= m_Wrapper.m_PlayerControlActionsCallbackInterface.OnTransform;
+                @Transform.performed -= m_Wrapper.m_PlayerControlActionsCallbackInterface.OnTransform;
+                @Transform.canceled -= m_Wrapper.m_PlayerControlActionsCallbackInterface.OnTransform;
             }
             m_Wrapper.m_PlayerControlActionsCallbackInterface = instance;
             if (instance != null)
@@ -444,6 +481,9 @@ public partial class @PlayerInputMap : IInputActionCollection2, IDisposable
                 @MoveInOut.started += instance.OnMoveInOut;
                 @MoveInOut.performed += instance.OnMoveInOut;
                 @MoveInOut.canceled += instance.OnMoveInOut;
+                @Transform.started += instance.OnTransform;
+                @Transform.performed += instance.OnTransform;
+                @Transform.canceled += instance.OnTransform;
             }
         }
     }
@@ -455,5 +495,6 @@ public partial class @PlayerInputMap : IInputActionCollection2, IDisposable
         void OnMoveVertical(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
         void OnMoveInOut(InputAction.CallbackContext context);
+        void OnTransform(InputAction.CallbackContext context);
     }
 }

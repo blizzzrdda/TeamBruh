@@ -13,8 +13,6 @@ public class ProceduralMeshProjector : MonoBehaviour
     // Left-Bot, Left-Top, Right-Top, Right-Bot
     [SerializeField] private List<Transform> vertices;
     [SerializeField] private Transform LightSource;
-
-    [SerializeField] private Transform realityShape;
     // Start is called before the first frame update
     void Start()
     {
@@ -37,8 +35,6 @@ public class ProceduralMeshProjector : MonoBehaviour
         mesh.vertices = verticesToProject;
 
         mesh.triangles = new int[] {0, 1, 2, 0, 2, 3};
-
-        realityShape.GetComponent<MeshFilter>().mesh = mesh;
     }
 
     IEnumerator GenerateMeshTimer()
@@ -69,6 +65,7 @@ public class ProceduralMeshProjector : MonoBehaviour
         meshRenderer.material = mat;
 
         meshFilter.mesh = mesh;
+        meshFilter.transform.GetComponent<MeshCollider>().sharedMesh = mesh;
         
         meshFilter.transform.rotation = quaternion.identity;
         meshFilter.transform.position = Vector3.zero;
