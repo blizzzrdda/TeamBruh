@@ -4,41 +4,31 @@ ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable:
   - first:
-      74: -3620637933483131629
-    second: Armature|Empty.001Action
-  - first:
-      74: -8945691123924629249
-    second: Idle
-  - first:
-      74: 1079665108409675491
-    second: Armature|Jump
-  - first:
-      74: -7551964380084998518
-    second: Armature|Run
-  - first:
-      74: -3767682975942640364
-    second: Run
-  - first:
       74: -3100369314251171874
     second: Idle
-  - first:
-      74: -2887542924006274817
-    second: BezierCircle|Empty.001Action
   - first:
       74: 8379002370259433826
     second: BezierCircle|Idle
   - first:
-      74: 6605828646973562237
-    second: BezierCircle|Run
+      74: -8945691123924629249
+    second: Armature|Idle
   - first:
-      74: 5539831331247536789
-    second: Jump
+      74: 1079665108409675491
+    second: Armature|Jump
+  - first:
+      74: -3767682975942640364
+    second: Armature|Run.001
   externalObjects:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: Eye
+    second: {fileID: 2100000, guid: 028c91d8d0e51c24499c176b848c3c71, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: Yo
-    second: {fileID: 2100000, guid: 2974c5518a023ae48859de2fa4e3883a, type: 2}
+    second: {fileID: 2100000, guid: 028c91d8d0e51c24499c176b848c3c71, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -68,6 +58,64 @@ ModelImporter:
     clipAnimations:
     - serializedVersion: 16
       name: Idle
+      takeName: Idle
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 59
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: BezierCircle|Idle
+      takeName: BezierCircle|Idle
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 59
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Armature|Idle
       takeName: Armature|Idle
       internalID: 0
       firstFrame: 0
@@ -96,7 +144,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Jump
+      name: Armature|Jump
       takeName: Armature|Jump
       internalID: 0
       firstFrame: 0
@@ -125,7 +173,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Run
+      name: Armature|Run.001
       takeName: Armature|Run.001
       internalID: 0
       firstFrame: 0
