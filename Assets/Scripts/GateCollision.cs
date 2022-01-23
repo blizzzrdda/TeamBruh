@@ -6,10 +6,14 @@ using UnityEngine;
 
 public class GateCollision : MonoBehaviour
 {
+    private bool gateUsed; 
+    
     [SerializeField]
     private Transform SpawningPoint;
     private void OnCollisionEnter(Collision collision)
     {
+        if(gateUsed) return;
+
         if (collision.gameObject.CompareTag("Player"))
         {
             if (RoomController.Get().IsGameOver())
@@ -23,6 +27,8 @@ public class GateCollision : MonoBehaviour
                 // destroy self
                 Debug.Log("Next level setup");
             }
+
+            gateUsed = true;
         }
     }
 }
