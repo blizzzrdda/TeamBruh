@@ -89,6 +89,8 @@ public class ProceduralMeshProjector : MonoBehaviour
     
     private void OnDrawGizmos()
     {
+        if (!LightSource) return;
+        
         Mesh mesh = new Mesh();
     
         Vector3[] verticesToProject = new Vector3[4];
@@ -108,8 +110,8 @@ public class ProceduralMeshProjector : MonoBehaviour
         
         meshFilter.transform.rotation = quaternion.identity;
         meshFilter.transform.position = Vector3.zero;
-        
-        Graphics.DrawMeshNow(mesh,
-            Matrix4x4.TRS(Vector3.zero, quaternion.identity, Vector3.one));
+
+    //     Graphics.DrawMeshNow(mesh,
+    //         Matrix4x4.TRS(Vector3.zero, quaternion.identity, Vector3.one));
     }
 }
