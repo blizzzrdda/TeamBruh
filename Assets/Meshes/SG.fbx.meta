@@ -1,26 +1,41 @@
 fileFormatVersion: 2
-guid: 776316b1959b4f84e84c25f567d0b313
+guid: 871301ac4695698429b62924a10ef0dd
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable:
   - first:
-      74: -3100369314251171874
+      74: 8385868443385248460
+    second: HandMove
+  - first:
+      74: -7228071847581776066
+    second: BezierCircle|BezierCircle|BezierCircle|Idle|BezierCircle|Idle
+  - first:
+      74: -8623925452346690179
+    second: BezierCircle|BezierCircle|Idle|Idle
+  - first:
+      74: 3949184196891408138
     second: Idle
   - first:
-      74: 8379002370259433826
-    second: BezierCircle|Idle
+      74: -5370286374201188833
+    second: Armature|Armature|Armature|Jump|Armature|Jump
   - first:
-      74: -8945691123924629249
-    second: Idle
-  - first:
-      74: 1079665108409675491
-    second: Jump
-  - first:
-      74: -3767682975942640364
-    second: Armature|Run.001
-  - first:
-      74: 5522812681064789136
+      74: -4702203215353067527
     second: Run
+  - first:
+      74: -5725280670745733296
+    second: Armature|Armature|Idle|Idle
+  - first:
+      74: 2932446905932183235
+    second: Armature|BezierCircle|BezierCircle|Idle|BezierCircle|Idle
+  - first:
+      74: -392894502648364506
+    second: Armature|BezierCircle|Idle|Idle
+  - first:
+      74: 3967562995118862778
+    second: Armature|HandMove
+  - first:
+      74: 5539831331247536789
+    second: Jump
   externalObjects:
   - first:
       type: UnityEngine:Material
@@ -60,8 +75,37 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
+      name: HandMove
+      takeName: HandMove
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 39
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
       name: Idle
-      takeName: Armature|Idle
+      takeName: Armature|Armature|Armature|Idle|Armature|Idle
       internalID: 0
       firstFrame: 0
       lastFrame: 59
@@ -90,7 +134,7 @@ ModelImporter:
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
       name: Jump
-      takeName: Armature|Jump
+      takeName: Armature|Armature|Armature|Jump|Armature|Jump
       internalID: 0
       firstFrame: 0
       lastFrame: 9
@@ -119,7 +163,7 @@ ModelImporter:
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
       name: Run
-      takeName: Armature|Run.001
+      takeName: Armature|Armature|Armature|Run.001|Armature|Run.001
       internalID: 0
       firstFrame: 0
       lastFrame: 59
@@ -200,7 +244,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 0.2
+    globalScale: 0.002
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0
