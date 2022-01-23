@@ -9,9 +9,9 @@ public class ShadowProjector : MonoBehaviour
     
     private void Awake()
     {
-        child.GetComponent<MeshFilter>().mesh = GetComponent<MeshFilter>().mesh;
+        SyncMesh();
         Vector3 childScale = child.localScale;
-        childScale.z = 3f;
+        childScale.z = 1f;
         child.localScale = childScale;
     }
 
@@ -36,9 +36,17 @@ public class ShadowProjector : MonoBehaviour
 
     private void OnGUI()
     {
-        child.GetComponent<MeshFilter>().mesh = GetComponent<MeshFilter>().mesh;
+        SyncMesh();
         Vector3 childScale = child.localScale;
-        childScale.z = 3f;
+        childScale.z = 1f;
         child.localScale = childScale;
+    }
+
+    private void SyncMesh()
+    {
+        // sync mesh
+        GetComponent<MeshCollider>().sharedMesh = GetComponent<MeshFilter>().mesh;
+        child.GetComponent<MeshCollider>().sharedMesh = GetComponent<MeshFilter>().mesh;
+        child.GetComponent<MeshFilter>().mesh = GetComponent<MeshFilter>().mesh;
     }
 }
