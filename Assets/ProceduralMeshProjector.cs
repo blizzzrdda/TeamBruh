@@ -65,6 +65,7 @@ public class ProceduralMeshProjector : MonoBehaviour
         meshRenderer.material = mat;
 
         meshFilter.mesh = mesh;
+        meshFilter.transform.GetComponent<MeshCollider>().sharedMesh = mesh;
         
         meshFilter.transform.rotation = quaternion.identity;
         meshFilter.transform.position = Vector3.zero;
