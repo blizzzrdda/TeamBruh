@@ -2,7 +2,7 @@ using System;
 using DG.Tweening;
 using UnityEngine;
 
-public class PlayerShadowControl_3D : MonoBehaviour
+public class PlayerShadowControl3D : MonoBehaviour
 {
     public float horizontalSpeed;
     public float jumpForce;
@@ -17,6 +17,9 @@ public class PlayerShadowControl_3D : MonoBehaviour
 
     private void Update()
     {
+        if (InputManager.Instance.controlState != 1)
+            return;
+        
         HandleMoveHorizontal();
         HandleJump();
     }
@@ -24,6 +27,9 @@ public class PlayerShadowControl_3D : MonoBehaviour
     private void HandleMoveHorizontal()
     {
         var x = InputManager.Instance.GetMoveHorizontal() * horizontalSpeed;
+        if (Mathf.Abs(x) <= .01f)
+            return;
+        
         var movement = new Vector3(x, 0, 0);
         transform.Translate(movement * Time.deltaTime);
     }
@@ -38,15 +44,16 @@ public class PlayerShadowControl_3D : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Ground"))
+        if (collision.collider.CompareTag("Ground"))
         {
+            Debug.Log("Hits on ground");
             _onGround = true;
         }
     }
 
-    private void OnCollisionExit(Collision collision)
+    private void OnCollisionExit(Collision other)
     {
-        if (collision.gameObject.CompareTag("Ground"))
+        if (other.collider.CompareTag("Ground"))
         {
             _onGround = false;
         }
