@@ -5,7 +5,13 @@ using UnityEngine.InputSystem;
 public class InputManager : MonoBehaviour
 {
     public static InputManager Instance { get; set; }
-    public bool isControllingReal;
+    
+    /// <summary>
+    /// Determine what is being controlled currently with input.
+    /// 0: PlayerReal, 1: PlayerShadow, 2: LightSource
+    /// </summary>
+    public int controlState;
+    public Animator cameraAnimator;
     
     private PlayerInputMap _playerInputMap;
     private InputAction _moveHorizontal, _moveVertical;
@@ -26,24 +32,27 @@ public class InputManager : MonoBehaviour
 
     private void Start()
     {
-        isControllingReal = false;
+        controlState = 0;
     }
 
     private void OnEnable()
     {
         _moveHorizontal = _playerInputMap.PlayerControl.MoveHorizontal;
-        _moveHorizontal.Enable();
-
         _moveVertical = _playerInputMap.PlayerControl.MoveVertical;
-        _playerInputMap.PlayerControl.MoveVertical.Enable();
-        _playerInputMap.PlayerControl.Jump.Enable();
+        _playerInputMap.PlayerControl.Enable();
     }
 
     private void OnDisable()
     {
-        _moveHorizontal.Disable();
-        _playerInputMap.PlayerControl.MoveVertical.Enable();
-        _playerInputMap.PlayerControl.Jump.Disable();
+        _playerInputMap.PlayerControl.Disable();
+    }
+
+    public void BlendCamera()
+    {
+        if (controlState == 0)
+            cameraAnimator.Play("Player");
+        if (controlState == 2)
+            cameraAnimator.Play("Light");
     }
 
     public float GetMoveHorizontal()
@@ -59,5 +68,10 @@ public class InputManager : MonoBehaviour
     public bool GetJumpThisFrame()
     {
         return _playerInputMap.PlayerControl.Jump.triggered;
+    }
+
+    public bool GetInteractThisFrame()
+    {
+        return _playerInputMap.PlayerControl.Interact.triggered;
     }
 }

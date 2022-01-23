@@ -53,6 +53,15 @@ public partial class @PlayerInputMap : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Interact"",
+                    ""type"": ""Button"",
+                    ""id"": ""2c0ee0e4-ddd7-4eea-b2e9-4c6e6c4799c8"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -209,6 +218,28 @@ public partial class @PlayerInputMap : IInputActionCollection2, IDisposable
                     ""action"": ""MoveVertical"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2ce0fbd8-57b5-40d0-b803-69260d3934f2"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ca7e3f70-1d3a-44c0-8bdc-44f32362e519"",
+                    ""path"": ""<Keyboard>/f"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -220,6 +251,7 @@ public partial class @PlayerInputMap : IInputActionCollection2, IDisposable
         m_PlayerControl_MoveHorizontal = m_PlayerControl.FindAction("MoveHorizontal", throwIfNotFound: true);
         m_PlayerControl_Jump = m_PlayerControl.FindAction("Jump", throwIfNotFound: true);
         m_PlayerControl_MoveVertical = m_PlayerControl.FindAction("MoveVertical", throwIfNotFound: true);
+        m_PlayerControl_Interact = m_PlayerControl.FindAction("Interact", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -282,6 +314,7 @@ public partial class @PlayerInputMap : IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerControl_MoveHorizontal;
     private readonly InputAction m_PlayerControl_Jump;
     private readonly InputAction m_PlayerControl_MoveVertical;
+    private readonly InputAction m_PlayerControl_Interact;
     public struct PlayerControlActions
     {
         private @PlayerInputMap m_Wrapper;
@@ -289,6 +322,7 @@ public partial class @PlayerInputMap : IInputActionCollection2, IDisposable
         public InputAction @MoveHorizontal => m_Wrapper.m_PlayerControl_MoveHorizontal;
         public InputAction @Jump => m_Wrapper.m_PlayerControl_Jump;
         public InputAction @MoveVertical => m_Wrapper.m_PlayerControl_MoveVertical;
+        public InputAction @Interact => m_Wrapper.m_PlayerControl_Interact;
         public InputActionMap Get() { return m_Wrapper.m_PlayerControl; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -307,6 +341,9 @@ public partial class @PlayerInputMap : IInputActionCollection2, IDisposable
                 @MoveVertical.started -= m_Wrapper.m_PlayerControlActionsCallbackInterface.OnMoveVertical;
                 @MoveVertical.performed -= m_Wrapper.m_PlayerControlActionsCallbackInterface.OnMoveVertical;
                 @MoveVertical.canceled -= m_Wrapper.m_PlayerControlActionsCallbackInterface.OnMoveVertical;
+                @Interact.started -= m_Wrapper.m_PlayerControlActionsCallbackInterface.OnInteract;
+                @Interact.performed -= m_Wrapper.m_PlayerControlActionsCallbackInterface.OnInteract;
+                @Interact.canceled -= m_Wrapper.m_PlayerControlActionsCallbackInterface.OnInteract;
             }
             m_Wrapper.m_PlayerControlActionsCallbackInterface = instance;
             if (instance != null)
@@ -320,6 +357,9 @@ public partial class @PlayerInputMap : IInputActionCollection2, IDisposable
                 @MoveVertical.started += instance.OnMoveVertical;
                 @MoveVertical.performed += instance.OnMoveVertical;
                 @MoveVertical.canceled += instance.OnMoveVertical;
+                @Interact.started += instance.OnInteract;
+                @Interact.performed += instance.OnInteract;
+                @Interact.canceled += instance.OnInteract;
             }
         }
     }
@@ -329,5 +369,6 @@ public partial class @PlayerInputMap : IInputActionCollection2, IDisposable
         void OnMoveHorizontal(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnMoveVertical(InputAction.CallbackContext context);
+        void OnInteract(InputAction.CallbackContext context);
     }
 }
