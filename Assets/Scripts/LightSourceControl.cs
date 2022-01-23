@@ -6,20 +6,12 @@ public class LightSourceControl : MonoBehaviour
     public float speed;
     public bool Enabled { get; set; }
     public Transform lightSource;
-    public Transform instructionCanvas;
-
-    private TMP_Text text;
-    private readonly string[] _textList = {"Press [F] to Control", "Press [F] to Leave"};
-
-    private void Awake()
-    {
-        text = instructionCanvas.GetComponentInChildren<TMP_Text>();
-    }
+    public TMP_Text text;
+    
+    private readonly string[] _textList = {"Press [F] to Control", "[WASDQE] to Move, [F] to Leave"};
 
     private void Update()
     {
-        instructionCanvas.transform.LookAt(Camera.main.transform);
-        
         if (InputManager.Instance.controlState != 2 || !Enabled)
         {
             text.text = _textList[0];

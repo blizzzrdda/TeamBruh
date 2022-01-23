@@ -5,14 +5,15 @@ using UnityEngine.InputSystem;
 public class InputManager : MonoBehaviour
 {
     public static InputManager Instance { get; set; }
-    
+
     /// <summary>
     /// Determine what is being controlled currently with input.
     /// 0: PlayerReal, 1: PlayerShadow, 2: LightSource
     /// </summary>
     public int controlState;
+
     public Animator cameraAnimator;
-    
+
     private PlayerInputMap _playerInputMap;
     private InputAction _moveHorizontal, _moveVertical;
 
@@ -26,7 +27,7 @@ public class InputManager : MonoBehaviour
         {
             Instance = this;
         }
-        
+
         _playerInputMap = new PlayerInputMap();
     }
 
@@ -46,7 +47,7 @@ public class InputManager : MonoBehaviour
 
     private void TransformOnPerformed(InputAction.CallbackContext obj)
     {
-        controlState = controlState == 0 ? 1 : 0;
+        controlState = 1 - controlState;
         BlendCamera();
     }
 
@@ -59,7 +60,9 @@ public class InputManager : MonoBehaviour
     {
         if (controlState == 0)
             cameraAnimator.Play("Player");
-        if (controlState > 0)
+        else if (controlState == 1)
+            cameraAnimator.Play("Shadow");
+        else 
             cameraAnimator.Play("Light");
     }
 
