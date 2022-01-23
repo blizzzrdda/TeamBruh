@@ -15,5 +15,7 @@ public class ObjectShadow : MonoBehaviour
                 transform.position = hit.point;
             }
         }
+        
+        transform.localScale = Vector3.one / (target.position - lightSource.position).magnitude * 20;
     }
 }

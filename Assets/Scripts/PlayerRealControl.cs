@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerRealControl : MonoBehaviour
 {
-    public float horizontalSpeed;
+    public float horizontalSpeed, verticalSpeed;
     public float jumpForce;
     public int track;
 
@@ -18,26 +18,26 @@ public class PlayerRealControl : MonoBehaviour
 
     private void Update()
     {
-        //HandleMoveHorizontal();
+        if (!InputManager.Instance.isControllingReal)
+            return;
+        
+        HandleMoveHorizontal();
         HandleMoveVertical();
-        //HandleJump();
+        HandleJump();
     }
 
     private void HandleMoveHorizontal()
     {
         var x = InputManager.Instance.GetMoveHorizontal() * horizontalSpeed;
-        var movement = new Vector3(x, 0, 0);
-        transform.Translate(movement * Time.deltaTime);
+        var movement = new Vector3(x, 0, 0) * Time.deltaTime;
+        _rigidbody.MovePosition(transform.position + transform.TransformDirection(movement));
     }
 
     private void HandleMoveVertical()
     {
-        var value = InputManager.Instance.GetMoveVerticalThisFrame();
-        if (value != 0)
-        {
-            track += value;
-            _rigidbody.DOMoveZ(track * 2.5f, .5f).SetEase(Ease.OutExpo);
-        }
+        var z = InputManager.Instance.GetMoveVertical() * verticalSpeed;
+        var movement = new Vector3(0, 0, z) * Time.deltaTime;
+        _rigidbody.MovePosition(transform.position + transform.TransformDirection(movement));
     }
 
     private void HandleJump()

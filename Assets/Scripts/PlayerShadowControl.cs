@@ -17,6 +17,9 @@ public class PlayerShadowControl : MonoBehaviour
 
     private void Update()
     {
+        if (InputManager.Instance.isControllingReal)
+            return;
+        
         HandleMoveHorizontal();
         HandleJump();
     }
@@ -24,8 +27,9 @@ public class PlayerShadowControl : MonoBehaviour
     private void HandleMoveHorizontal()
     {
         var x = InputManager.Instance.GetMoveHorizontal() * horizontalSpeed;
-        var movement = new Vector3(x, 0, 0);
-        transform.Translate(movement * Time.deltaTime);
+        if (Mathf.Abs(x) <= .01f)
+            return;
+        _rigidbody.AddForce(x * Vector3.right * Time.deltaTime * horizontalSpeed);
     }
 
     private void HandleJump()
