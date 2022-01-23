@@ -2,17 +2,17 @@ using System;
 using DG.Tweening;
 using UnityEngine;
 
-public class PlayerShadowControl : MonoBehaviour
+public class PlayerShadowControl_3D : MonoBehaviour
 {
     public float horizontalSpeed;
     public float jumpForce;
 
-    private Rigidbody2D _rigidbody;
+    private Rigidbody _rigidbody;
     private bool _onGround;
 
     private void Awake()
     {
-        _rigidbody = GetComponent<Rigidbody2D>();
+        _rigidbody = GetComponent<Rigidbody>();
     }
 
     private void Update()
@@ -36,17 +36,17 @@ public class PlayerShadowControl : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("ShadowObj"))
+        if (collision.gameObject.CompareTag("Ground"))
         {
             _onGround = true;
         }
     }
 
-    private void OnCollisionExit2D(Collision2D collision)
+    private void OnCollisionExit(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("ShadowObj"))
+        if (collision.gameObject.CompareTag("Ground"))
         {
             _onGround = false;
         }

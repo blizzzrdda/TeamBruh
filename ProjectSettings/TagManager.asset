@@ -6,11 +6,12 @@ TagManager:
   tags:
   - Ground
   - WallCollider
+  - ShadowObj
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Wall
   - Water
   - UI
   - 
