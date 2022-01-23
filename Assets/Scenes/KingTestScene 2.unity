@@ -288,8 +288,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 531884451}
-  m_LocalRotation: {x: 0.09768079, y: 0.0054237554, z: -0.0005323505, w: 0.9952029}
-  m_LocalPosition: {x: 0.00000023841858, y: 0, z: 0}
+  m_LocalRotation: {x: 0.07460169, y: 0.0000000012874997, z: -9.631805e-11, w: 0.9972134}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1131747602}
@@ -556,8 +556,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9384ab8608cdc3d479fe89cd51eed48f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_BindingMode: 5
-  m_FollowOffset: {x: 0, y: 0.89, z: -5.47}
+  m_BindingMode: 1
+  m_FollowOffset: {x: 0, y: 11.74, z: -30}
   m_XDamping: 1
   m_YDamping: 1
   m_ZDamping: 1
@@ -800,8 +800,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 873226563}
-  m_LocalRotation: {x: 0.051318653, y: 0.00544262, z: -0.00027968056, w: 0.9986675}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0.13955316, y: 5.2943057e-15, z: -9.398815e-16, w: 0.9902146}
+  m_LocalPosition: {x: 0, y: 6.664302, z: 3.7340012}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1740166952}
@@ -999,7 +999,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5df1c4df6bd281841b8432600aa15929, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
+  speed: 1.5
 --- !u!1 &1131747601
 GameObject:
   m_ObjectHideFlags: 3
@@ -1072,8 +1072,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9384ab8608cdc3d479fe89cd51eed48f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_BindingMode: 5
-  m_FollowOffset: {x: 0, y: 0.89, z: -5.47}
+  m_BindingMode: 1
+  m_FollowOffset: {x: 0, y: 11.74, z: -30}
   m_XDamping: 1
   m_YDamping: 1
   m_ZDamping: 1
@@ -1773,7 +1773,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1695320979}
-  m_LocalRotation: {x: 0.074469626, y: 0.0054346677, z: -0.00040585073, w: 0.9972084}
+  m_LocalRotation: {x: 0.051349945, y: 0.00000002976301, z: -0.0000000015303476, w: 0.9986808}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1989,8 +1989,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9384ab8608cdc3d479fe89cd51eed48f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_BindingMode: 5
-  m_FollowOffset: {x: 0, y: 0.89, z: -5.47}
+  m_BindingMode: 1
+  m_FollowOffset: {x: 0, y: 11.74, z: -30}
   m_XDamping: 1
   m_YDamping: 1
   m_ZDamping: 1
@@ -2208,7 +2208,7 @@ MonoBehaviour:
   m_Priority: 0
   m_StandbyUpdate: 2
   m_LookAt: {fileID: 939187899}
-  m_Follow: {fileID: 0}
+  m_Follow: {fileID: 939187899}
   m_CommonLens: 1
   m_Lens:
     FieldOfView: 50
@@ -2225,9 +2225,9 @@ MonoBehaviour:
         m_Calls: []
   m_LegacyBlendHint: 0
   m_YAxis:
-    Value: -0.47
+    Value: 1
     m_SpeedMode: 0
-    m_MaxSpeed: 2
+    m_MaxSpeed: 5
     m_AccelTime: 0.2
     m_DecelTime: 0.1
     m_InputAxisName: Mouse Y
@@ -2251,7 +2251,7 @@ MonoBehaviour:
   m_XAxis:
     Value: 0
     m_SpeedMode: 0
-    m_MaxSpeed: 300
+    m_MaxSpeed: 100
     m_AccelTime: 0.1
     m_DecelTime: 0.1
     m_InputAxisName: Mouse X
@@ -2276,15 +2276,15 @@ MonoBehaviour:
     m_RecenteringTime: 2
     m_LegacyHeadingDefinition: -1
     m_LegacyVelocityFilterStrength: -1
-  m_BindingMode: 5
-  m_SplineCurvature: 0.2
+  m_BindingMode: 1
+  m_SplineCurvature: 0.148
   m_Orbits:
-  - m_Height: 10.37
-    m_Radius: 3.54
+  - m_Height: 11.74
+    m_Radius: 30
   - m_Height: 3.17
-    m_Radius: 7.44
-  - m_Height: 0.89
-    m_Radius: 5.47
+    m_Radius: 34.01
+  - m_Height: -0.8
+    m_Radius: 30
   m_LegacyHeadingBias: 3.4028235e+38
   m_Rigs:
   - {fileID: 531884452}
@@ -2298,7 +2298,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1856651546}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.8, y: 14.2, z: -25.3}
+  m_LocalPosition: {x: 2.1754394, y: 12.448134, z: -24.590427}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 531884453}

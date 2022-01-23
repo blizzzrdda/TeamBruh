@@ -40,6 +40,14 @@ public class InputManager : MonoBehaviour
         _moveHorizontal = _playerInputMap.PlayerControl.MoveHorizontal;
         _moveVertical = _playerInputMap.PlayerControl.MoveVertical;
         _playerInputMap.PlayerControl.Enable();
+
+        _playerInputMap.PlayerControl.Transform.performed += TransformOnperformed;
+    }
+
+    private void TransformOnperformed(InputAction.CallbackContext obj)
+    {
+        controlState = controlState == 0 ? 1 : 0;
+        BlendCamera();
     }
 
     private void OnDisable()
@@ -51,7 +59,7 @@ public class InputManager : MonoBehaviour
     {
         if (controlState == 0)
             cameraAnimator.Play("Player");
-        if (controlState == 2)
+        if (controlState > 0)
             cameraAnimator.Play("Light");
     }
 
