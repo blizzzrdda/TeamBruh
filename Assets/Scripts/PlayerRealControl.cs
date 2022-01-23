@@ -6,14 +6,21 @@ public class PlayerRealControl : MonoBehaviour
 {
     public float horizontalSpeed, verticalSpeed;
     public float jumpForce;
+    public InGameUIManager inGameUIManager;
 
     private Rigidbody _rigidbody;
     private bool _onGround;
     private bool _inLightControl;
+    private Vector3 _spawnPos;
 
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody>();
+    }
+
+    private void Start()
+    {
+        _spawnPos = transform.position;
     }
 
     private void Update()
@@ -41,13 +48,17 @@ public class PlayerRealControl : MonoBehaviour
         }
     }
 
+    public void Respawn()
+    {
+        transform.position = _spawnPos;
+    }
+
     private void HandleMove()
     {
         var x = InputManager.Instance.GetMoveHorizontal() * horizontalSpeed;
         var z = InputManager.Instance.GetMoveVertical() * verticalSpeed;
         var movement = new Vector3(x, 0, -z) * Time.deltaTime;
-        // _rigidbody.AddForce(movement);
-        transform.Translate(movement);
+        _rigidbody.AddForce(movement);
     }
 
     private void HandleJump()
@@ -63,6 +74,12 @@ public class PlayerRealControl : MonoBehaviour
         if (collision.gameObject.CompareTag("Ground"))
         {
             _onGround = true;
+        }
+
+        if (collision.gameObject.name == "DeathZone")
+        {
+            InputManager.Instance.controlState = 3;
+            inGameUIManager.Dead();
         }
     }
 
