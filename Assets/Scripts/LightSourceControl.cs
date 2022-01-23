@@ -1,19 +1,34 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class LightSourceControl : MonoBehaviour
 {
     public float speed;
     public bool Enabled { get; set; }
-    
+    public Transform lightSource;
+    public Transform instructionCanvas;
+
+    private TMP_Text text;
+    private readonly string[] _textList = {"Press [F] to Control", "Press [F] to Leave"};
+
+    private void Awake()
+    {
+        text = instructionCanvas.GetComponentInChildren<TMP_Text>();
+    }
+
     private void Update()
     {
-        if (InputManager.Instance.controlState != 2 || !Enabled)
-            return;
+        instructionCanvas.transform.LookAt(Camera.main.transform);
         
-        Control();
+        if (InputManager.Instance.controlState != 2 || !Enabled)
+        {
+            text.text = _textList[0];
+        }
+        else
+        {
+            text.text = _textList[1];
+            Control();
+        }
     }
 
     private void Control()
@@ -22,6 +37,6 @@ public class LightSourceControl : MonoBehaviour
         var y = InputManager.Instance.GetMoveVertical();
         var z = InputManager.Instance.GetMoveInOut();
         var movement = new Vector3(x, -y, z) * Time.deltaTime * speed;
-        transform.Translate(movement);
+        lightSource.transform.Translate(movement);
     }
 }
