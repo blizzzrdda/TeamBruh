@@ -58,6 +58,10 @@ public class PlayerRealControl : MonoBehaviour
         var x = InputManager.Instance.GetMoveHorizontal() * horizontalSpeed;
         var z = InputManager.Instance.GetMoveVertical() * verticalSpeed;
         var movement = new Vector3(x, 0, -z) * Time.deltaTime;
+
+        if (movement.magnitude < .01f)
+            return;
+
         // _rigidbody.AddForce(movement);
         transform.Translate(movement);
     }
