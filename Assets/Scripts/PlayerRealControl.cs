@@ -6,10 +6,10 @@ public class PlayerRealControl : MonoBehaviour
 {
     public float horizontalSpeed, verticalSpeed;
     public float jumpForce;
-    public int track;
 
     private Rigidbody _rigidbody;
     private bool _onGround;
+    private bool _inLightControl;
 
     private void Awake()
     {
@@ -18,26 +18,35 @@ public class PlayerRealControl : MonoBehaviour
 
     private void Update()
     {
-        if (!InputManager.Instance.isControllingReal)
-            return;
-        
-        HandleMoveHorizontal();
-        HandleMoveVertical();
-        HandleJump();
+        if (InputManager.Instance.controlState == 0)
+        {
+            HandleMove(); 
+            HandleJump();
+        }
+
+        if (_inLightControl)
+        {
+            if (InputManager.Instance.GetInteractThisFrame())
+            {
+                if (InputManager.Instance.controlState == 0)
+                {
+                    InputManager.Instance.controlState = 2;
+                }
+                else
+                {
+                    InputManager.Instance.controlState = 0;
+                }
+                InputManager.Instance.BlendCamera();
+            }
+        }
     }
 
-    private void HandleMoveHorizontal()
+    private void HandleMove()
     {
         var x = InputManager.Instance.GetMoveHorizontal() * horizontalSpeed;
-        var movement = new Vector3(x, 0, 0) * Time.deltaTime;
-        _rigidbody.MovePosition(transform.position + transform.TransformDirection(movement));
-    }
-
-    private void HandleMoveVertical()
-    {
         var z = InputManager.Instance.GetMoveVertical() * verticalSpeed;
-        var movement = new Vector3(0, 0, z) * Time.deltaTime;
-        _rigidbody.MovePosition(transform.position + transform.TransformDirection(movement));
+        var movement = new Vector3(x, 0, -z) * Time.deltaTime;
+        _rigidbody.AddForce(movement);
     }
 
     private void HandleJump()
@@ -61,6 +70,22 @@ public class PlayerRealControl : MonoBehaviour
         if (collision.gameObject.CompareTag("Ground"))
         {
             _onGround = false;
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("LightControl"))
+        {
+            _inLightControl = true;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("LightControl"))
+        {
+            _inLightControl = false;
         }
     }
 }

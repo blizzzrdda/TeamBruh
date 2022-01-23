@@ -17,7 +17,7 @@ public class PlayerShadowControl : MonoBehaviour
 
     private void Update()
     {
-        if (InputManager.Instance.isControllingReal)
+        if (InputManager.Instance.controlState != 1)
             return;
         
         HandleMoveHorizontal();
