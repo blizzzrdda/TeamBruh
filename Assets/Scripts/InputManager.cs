@@ -74,4 +74,9 @@ public class InputManager : MonoBehaviour
     {
         return _playerInputMap.PlayerControl.Interact.triggered;
     }
+
+    public float GetMoveInOut()
+    {
+        return _playerInputMap.PlayerControl.MoveInOut.ReadValue<float>();
+    }
 }

@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class LightSourceControl : MonoBehaviour
 {
-    public float horizontalSpeed, verticalSpeed;
+    public float speed;
     
     private void Update()
     {
@@ -17,9 +17,10 @@ public class LightSourceControl : MonoBehaviour
 
     private void Control()
     {
-        var x = InputManager.Instance.GetMoveHorizontal() * horizontalSpeed;
-        var y = InputManager.Instance.GetMoveVertical() * verticalSpeed;
-        var movement = new Vector3(x, -y, 0) * Time.deltaTime;
+        var x = InputManager.Instance.GetMoveHorizontal();
+        var y = InputManager.Instance.GetMoveVertical();
+        var z = InputManager.Instance.GetMoveInOut();
+        var movement = new Vector3(x, -y, z) * Time.deltaTime * speed;
         transform.Translate(movement);
     }
 }
