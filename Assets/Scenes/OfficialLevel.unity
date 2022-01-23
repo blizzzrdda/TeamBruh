@@ -123,25 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &28433359 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8998408615024016723, guid: 9d3329f6f6d668e4dbbe02998eeb96c4, type: 3}
-  m_PrefabInstance: {fileID: 991113013}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &28433364
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 28433359}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 139a13f0b4286344dbff2ae0b57fdbb6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _objectReference: {fileID: 11400000, guid: 3993b1f473d68fe4dba0b216738ff879, type: 2}
-  autoDestroy: 0
 --- !u!4 &151594342 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8998408615024016725, guid: 9d3329f6f6d668e4dbbe02998eeb96c4, type: 3}
@@ -391,7 +372,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2232549308807472302, guid: e8329c269e2f4d142ae956e24d56a001, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -5.4276686
+      value: -5.3316693
       objectReference: {fileID: 0}
     - target: {fileID: 2232549308807472303, guid: e8329c269e2f4d142ae956e24d56a001, type: 3}
       propertyPath: m_Follow
@@ -490,26 +471,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: -1213362025086314109, guid: 9d3329f6f6d668e4dbbe02998eeb96c4, type: 3}
-      propertyPath: m_Mass
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -1213362025086314109, guid: 9d3329f6f6d668e4dbbe02998eeb96c4, type: 3}
-      propertyPath: m_Constraints
-      value: 120
-      objectReference: {fileID: 0}
-    - target: {fileID: -1213362025086314109, guid: 9d3329f6f6d668e4dbbe02998eeb96c4, type: 3}
-      propertyPath: m_CollisionDetection
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1086285045, guid: 9d3329f6f6d668e4dbbe02998eeb96c4, type: 3}
       propertyPath: jumpForce
-      value: 1000
+      value: 100
       objectReference: {fileID: 0}
-    - target: {fileID: 1135418652281568375, guid: 9d3329f6f6d668e4dbbe02998eeb96c4, type: 3}
-      propertyPath: m_Material
-      value: 
-      objectReference: {fileID: 13400000, guid: df7abfedf76c4754e9c0ef677d8614ae, type: 2}
     - target: {fileID: 8998408615024016723, guid: 9d3329f6f6d668e4dbbe02998eeb96c4, type: 3}
       propertyPath: m_Name
       value: Shadow_3D
@@ -528,7 +493,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8998408615024016725, guid: 9d3329f6f6d668e4dbbe02998eeb96c4, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 14.67
+      value: 14.766
       objectReference: {fileID: 0}
     - target: {fileID: 8998408615024016725, guid: 9d3329f6f6d668e4dbbe02998eeb96c4, type: 3}
       propertyPath: m_LocalRotation.w

@@ -15,7 +15,7 @@ public class PlayerShadowControl3D : MonoBehaviour
         _rigidbody = GetComponent<Rigidbody>();
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         if (InputManager.Instance.controlState != 1)
             return;
@@ -32,7 +32,7 @@ public class PlayerShadowControl3D : MonoBehaviour
         
         var movement = new Vector3(x, 0, 0);
         // _rigidbody.AddForce(movement * Time.deltaTime);
-        transform.Translate(movement * Time.deltaTime);
+        transform.Translate(movement * Time.fixedTime);
     }
 
     private void HandleJump()
