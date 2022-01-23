@@ -46,7 +46,8 @@ public class PlayerRealControl : MonoBehaviour
         var x = InputManager.Instance.GetMoveHorizontal() * horizontalSpeed;
         var z = InputManager.Instance.GetMoveVertical() * verticalSpeed;
         var movement = new Vector3(x, 0, -z) * Time.deltaTime;
-        _rigidbody.AddForce(movement);
+        // _rigidbody.AddForce(movement);
+        transform.Translate(movement);
     }
 
     private void HandleJump()
@@ -78,6 +79,7 @@ public class PlayerRealControl : MonoBehaviour
         if (other.CompareTag("LightControl"))
         {
             _inLightControl = true;
+            other.gameObject.GetComponentInChildren<LightSourceControl>().Enabled = true;
         }
     }
 
@@ -86,6 +88,7 @@ public class PlayerRealControl : MonoBehaviour
         if (other.CompareTag("LightControl"))
         {
             _inLightControl = false;
+            other.gameObject.GetComponentInChildren<LightSourceControl>().Enabled = false;
         }
     }
 }
