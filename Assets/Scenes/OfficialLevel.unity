@@ -471,10 +471,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1086285045, guid: 9d3329f6f6d668e4dbbe02998eeb96c4, type: 3}
-      propertyPath: jumpForce
-      value: 100
-      objectReference: {fileID: 0}
     - target: {fileID: 8998408615024016723, guid: 9d3329f6f6d668e4dbbe02998eeb96c4, type: 3}
       propertyPath: m_Name
       value: Shadow_3D
